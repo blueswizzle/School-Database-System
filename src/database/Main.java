@@ -7,7 +7,11 @@ public class Main {
         System.out.println(s);
 
         Teacher t = new Teacher("Matt", "Stonie", "T23ER56",500);
-        System.out.println(t);
+        Teacher f = new Teacher("Yama", "Fuller", "T14QE98", 650);
+        School school = new School("Coral Glades High School");
+        school.addTeacher(t);
+        school.addTeacher(f);
+        school.listTeachers();
 
 
     }
