@@ -19,6 +19,7 @@ public class Main {
         school.paySalary(t);
         s.payTuition(2000);
         school.showFinanceHistory();
+        school.listStudentsByGrade(3);
 
 
 

@@ -10,7 +10,9 @@ public class School {
     private String schoolName;
     private static int totalMoneyEarned; //Just the money earned from Students
     private static int totalMoneySpent; //Just the money spent for Teachers
-    private static int totalAmount; //A school's total amount of money, including what they earned and spent
+    private static int totalAmount; //A school's total amount of money, including what they earned and spent i.e.
+                                    // their balance
+
 
     public School(String schoolName){
         this.schoolName = schoolName;
@@ -44,6 +46,21 @@ public class School {
             System.out.println(s);
         }
         System.out.println("--------------------------------");
+    }
+    public void listStudentsByGrade(int grade) {
+        System.out.println("Listing Students in grade " + grade);
+        System.out.println("--------------------------------");
+        for (Student s : students) {
+            if (s.getGrade() == grade) {
+                System.out.println(s);
+            }else{
+                System.out.println("No students in that grade level");
+                break;
+            }
+
+        }
+        System.out.println("--------------------------------");
+
     }
     public static void receieveTuition(int amount){ //Used when a Student pays their tuition and money is sent to
                                                     // the school

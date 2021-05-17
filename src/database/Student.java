@@ -18,7 +18,9 @@ public class Student extends Person {
         tuitionPaid += amount;
         School.receieveTuition(amount);
     }
-
+    public int getGrade(){
+        return this.grade;
+    }
 
 
 
