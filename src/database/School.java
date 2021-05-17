@@ -2,19 +2,23 @@ package database;
 
 import java.util.ArrayList;
 
+
 public class School {
     ArrayList<Teacher> teachers;
     ArrayList<Student> students;
+
     private String schoolName;
-    private int moneyEarned;
-    private int moneySpent;
+    private static int totalMoneyEarned; //Just the money earned from Students
+    private static int totalMoneySpent; //Just the money spent for Teachers
+    private static int totalAmount; //A school's total amount of money, including what they earned and spent
 
     public School(String schoolName){
         this.schoolName = schoolName;
+        this.totalAmount = 0;
         this.teachers = new ArrayList<>();
         this.students = new ArrayList<>();
-        this.moneyEarned =0;
-        this.moneySpent =0;
+        totalMoneyEarned =0;
+        totalMoneySpent =0;
     }
     public void addTeacher(Teacher t){
         this.teachers.add(t);
@@ -32,6 +36,28 @@ public class School {
             System.out.println(t);
         }
         System.out.println("--------------------------------");
+    }
+    public void listStudents(){
+        System.out.println("Students in " + getSchoolName());
+        System.out.println("--------------------------------");
+        for(Student s : students){
+            System.out.println(s);
+        }
+        System.out.println("--------------------------------");
+    }
+    public static void receieveTuition(int amount){ //Used when a Student pays their tuition and money is sent to
+                                                    // the school
+        totalMoneyEarned += amount;
+        totalAmount += amount;
+    }
+    public void paySalary(Teacher t){
+        totalMoneySpent += t.getSalary();
+        totalAmount -= t.getSalary();
+    }
+    public void showFinanceHistory(){
+        System.out.println(getSchoolName() + " has paid a total of $" + totalMoneySpent + " to the teachers");
+        System.out.println(getSchoolName() + " has received a total of $" + totalMoneyEarned + " from the Students");
+        System.out.println(getSchoolName() + "'s Total Balance: $" + totalAmount);
     }
 
 }
