@@ -1,0 +1,5 @@
+Physics,300
+Calculus,330
+English,300
+Chemistry,330
+Biology,300

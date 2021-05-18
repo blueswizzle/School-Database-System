@@ -76,5 +76,27 @@ public class School {
         System.out.println(getSchoolName() + " has received a total of $" + totalMoneyEarned + " from the Students");
         System.out.println(getSchoolName() + "'s Total Balance: $" + totalAmount);
     }
+    public boolean studentExist(String student){
+        boolean studentExist = false;
+        for(int i=0; i < students.size(); i++){
+            if(students.get(i).getFirstName().equals(student)|| students.get(i).getLastName().equals(student)){
+                studentExist = true;
+            }
+        }
+        if(studentExist){
+            return true;
+        }else{
+            return false;
+        }
 
+    }
+    public String getStudentName(String student){
+       String studentName="";
+        for(int i=0; i < students.size(); i++){
+            if(students.get(i).getFirstName().equals(student)|| students.get(i).getLastName().equals(student)){
+                studentName= students.get(i).getFirstName() +" " + students.get(i).getLastName();
+            }
+        }
+        return studentName;
+    }
 }
