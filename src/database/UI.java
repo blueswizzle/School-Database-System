@@ -84,6 +84,19 @@ public class UI {
             school.addStudent(new Student(firstName,lastName,id,grade));
         }
     }
+    public void addTeachers() throws FileNotFoundException {
+        File teacherList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/teacherslist.txt");
+        Scanner teacherReader = new Scanner(teacherList);
+        while(teacherReader.hasNextLine()){
+            String teacher = teacherReader.nextLine();
+            String [] parts = teacher.split(",");
+            String firstName = parts[0];
+            String lastName = parts[1];
+            String id = parts[2];
+            int salary = Integer.valueOf(parts[4]);
+            school.addTeacher(new Teacher(firstName,lastName,id,salary));
+        }
+    }
 
 
 
