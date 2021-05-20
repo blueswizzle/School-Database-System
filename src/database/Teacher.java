@@ -22,6 +22,7 @@ public class Teacher extends Person{
             salaryEarned += salary;
             timesGotPaid++;
             School.paySalary(School.getTeacher(this.getFirstName()));
+            System.out.println("\t\t" + this.firstName + " " + this.lastName + " has been paid!");
         }
 
     }

@@ -96,6 +96,7 @@ public class UI {
         System.out.println("9)View School's finance history");
     }
     public void receiveStudentTuitionOption(){
+        school.listStudents();
         System.out.println("From which student did you receive tuition from?");
         String student = scanner.nextLine();
         if(school.studentExist(student)){
@@ -108,11 +109,13 @@ public class UI {
         }
     }
     public void getStudentInfo(){
+        school.listStudents();
         System.out.println("Which student's info would you like to access? Enter first or last name: ");
         String student = scanner.nextLine();
         school.getStudent(student).showInfo();
     }
     public void getTeacherInfo(){
+        school.listTeachers();
         System.out.println("Which teacher's information would you like to access? Enter first or last name: ");
         String teacher = scanner.nextLine();
         school.getTeacher(teacher).showTeacherInfo();
@@ -122,6 +125,7 @@ public class UI {
         System.out.println("Whose salary would you like to pay? School's Remaining balance: $" + school.getBalance());
         String teacher = scanner.nextLine();
         school.getTeacher(teacher).receiveSalary();
+        System.out.println("\t\tSchool's Remaining balance: $" + school.getBalance());
     }
     public void addCourses() throws FileNotFoundException {
         File coursesList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/courselist.txt");

@@ -17,7 +17,7 @@ public class School {
 
     public School(String schoolName){
         this.schoolName = schoolName;
-        this.totalAmount = 0;
+        this.totalAmount = 3000;
         this.teachers = new ArrayList<>();
         this.students = new ArrayList<>();
         totalMoneyEarned =0;
