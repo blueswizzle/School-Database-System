@@ -1,12 +1,12 @@
 package database;
 
 import java.util.ArrayList;
-import java.util.Locale;
+
 
 
 public class School {
-    ArrayList<Teacher> teachers;
-    ArrayList<Student> students;
+    static ArrayList<Teacher> teachers;
+     ArrayList<Student> students;
 
     private String schoolName;
     private static int totalMoneyEarned; //Just the money earned from Students
@@ -69,10 +69,14 @@ public class School {
         totalMoneyEarned += amount;
         totalAmount += amount;
     }
-    public void paySalary(Teacher t){
-        totalMoneySpent += t.getSalary();
-        totalAmount -= t.getSalary();
+    public static void paySalary(Teacher t){
+            totalMoneySpent += t.getSalary();
+            totalAmount -= t.getSalary();
     }
+    public static int getBalance(){
+        return totalAmount;
+    }
+
     public void showFinanceHistory(){
         System.out.println("\t\t--------------------------------");
         System.out.println("\t\t"+ getSchoolName() + " has paid a total of $" + totalMoneySpent + " to the teachers");
@@ -113,4 +117,36 @@ public class School {
         return s;
 
     }
+    public String getTeacherName(String teacher){
+        String teacherName="";
+        for(int i=0; i < teachers.size(); i++){
+            if(teachers.get(i).getFirstName().equalsIgnoreCase(teacher)|| teachers.get(i).getLastName().equalsIgnoreCase(teacher)){
+                teacherName= teachers.get(i).getFirstName() +" " + teachers.get(i).getLastName();
+            }
+        }
+        return teacherName;
+    }
+    public boolean teacherExist(String teacher){
+        boolean exist = false;
+        for(int i=0; i < teachers.size(); i++){
+            if(teachers.get(i).getFirstName().equalsIgnoreCase(teacher)|| teachers.get(i).getLastName().equalsIgnoreCase(teacher)){
+                exist =true;
+            }
+        }
+        if(exist){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public static Teacher getTeacher(String teacher){
+        Teacher t = null;
+        for(int i=0; i < teachers.size(); i++){
+            if(teachers.get(i).getFirstName().equalsIgnoreCase(teacher)|| teachers.get(i).getLastName().equalsIgnoreCase(teacher)){
+                t = teachers.get(i);
+            }
+        }
+        return t;
+    }
+
 }

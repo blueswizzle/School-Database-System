@@ -94,8 +94,8 @@ public class UI {
         System.out.println("From which student did you receive tuition from?");
         String student = scanner.nextLine();
         if(school.studentExist(student)){
-            System.out.println("How much did " + school.getStudentName(student) + " pay?");
             school.getStudent(student).showInfo();
+            System.out.println("How much did " + school.getStudentName(student) + " pay?");
             int amount = Integer.valueOf(scanner.nextLine());
             school.getStudent(student).payTuition(amount);
         }else{
