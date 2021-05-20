@@ -2,11 +2,13 @@ package database;
 
 import java.util.HashMap;
 
+
 public class Student extends Person {
     private int grade;
     private int totalTutionCost; //Shows the total Tution cost student is enrolled in i.e. The amount they have to pay
                                 // for all of their courses
     private int tuitionPaid; // The amount a student has paid so far
+    private int tuitionRemaining;
     private HashMap<String,Integer> courses;
 
     // A student's ID always starts with 'S' to signify this is a student
@@ -15,12 +17,19 @@ public class Student extends Person {
         this.grade = grade;
         this.totalTutionCost=0;
         this.tuitionPaid=0;
+        this.tuitionRemaining=0;
         this.courses = new HashMap<>();
     }
     public void payTuition(int amount){
-        totalTutionCost -= amount;
-        tuitionPaid += amount;
-        School.receieveTuition(amount);
+           if(!(amount > tuitionRemaining) ){
+               tuitionRemaining = totalTutionCost - amount;
+               tuitionPaid += amount;
+               School.receieveTuition(amount);
+
+           }else{
+               System.out.println("\t\tAmount exceeds Student's total tuition cost! Enter lower amount");
+
+           }
     }
     public int getGrade(){
         return this.grade;
@@ -28,14 +37,20 @@ public class Student extends Person {
 
     public void enroll(String course, int price){
         courses.put(course,price);
+        totalTutionCost += price;
+        tuitionRemaining = totalTutionCost;
     }
     public void showEnrolledCourses(){
         courses.forEach((key,value) ->{
             System.out.println(key + ":$" + value);
         });
     }
-    public String getID(){
-        return this.id;
+
+    public void showInfo(){
+        System.out.println("\t\t" + toString());
+        System.out.println("\t\tTotal Tuition Cost: $" + totalTutionCost);
+        System.out.println("\t\tTuiton amount paid as of now: $" + tuitionPaid);
+        System.out.println("\t\tTuition remaining to be paid: $" + tuitionRemaining);
     }
 
 

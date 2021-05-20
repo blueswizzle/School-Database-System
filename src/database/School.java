@@ -33,34 +33,35 @@ public class School {
         return this.schoolName;
     }
     public void listTeachers(){
-        System.out.println("Teachers in " + getSchoolName());
-        System.out.println("--------------------------------");
+        System.out.println("\t\tTeachers in " + getSchoolName());
+        System.out.println("\t\t--------------------------------");
         for(Teacher t : teachers){
-            System.out.println(t);
+            System.out.println("\t\t"+ t);
         }
-        System.out.println("--------------------------------");
+        System.out.println("\t\t--------------------------------");
     }
     public void listStudents(){
-        System.out.println("Students in " + getSchoolName());
+        System.out.println("\t\tStudents in " + getSchoolName());
         System.out.println("--------------------------------");
         for(Student s : students){
-            System.out.println(s);
+            System.out.println("\t\t"+ s);
         }
-        System.out.println("--------------------------------");
+        System.out.println("\t\t--------------------------------");
     }
     public void listStudentsByGrade(int grade) {
-        System.out.println("Listing Students in grade " + grade);
-        System.out.println("--------------------------------");
+        System.out.println("\t\tListing Students in grade " + grade);
+        System.out.println("\t\t--------------------------------");
+        int i=0;
         for (Student s : students) {
             if (s.getGrade() == grade) {
-                System.out.println(s);
-            }else{
-                System.out.println("No students in that grade level");
-                break;
+                System.out.println("\t\t" +s);
+                i++;
             }
-
         }
-        System.out.println("--------------------------------");
+        if(i == 0){
+            System.out.println("\tNo students in that grade");
+        }
+        System.out.println("\t\t--------------------------------");
 
     }
     public static void receieveTuition(int amount){ //Used when a Student pays their tuition and money is sent to
@@ -73,9 +74,11 @@ public class School {
         totalAmount -= t.getSalary();
     }
     public void showFinanceHistory(){
-        System.out.println(getSchoolName() + " has paid a total of $" + totalMoneySpent + " to the teachers");
-        System.out.println(getSchoolName() + " has received a total of $" + totalMoneyEarned + " from the Students");
-        System.out.println(getSchoolName() + "'s Total Balance: $" + totalAmount);
+        System.out.println("\t\t--------------------------------");
+        System.out.println("\t\t"+ getSchoolName() + " has paid a total of $" + totalMoneySpent + " to the teachers");
+        System.out.println("\t\t"+getSchoolName() + " has received a total of $" + totalMoneyEarned + " from the Students");
+        System.out.println("\t\t"+getSchoolName() + "'s Total Balance: $" + totalAmount);
+        System.out.println("\t\t--------------------------------");
     }
     public boolean studentExist(String student){
         boolean studentExist = false;

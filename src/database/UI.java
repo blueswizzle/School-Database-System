@@ -21,12 +21,40 @@ public class UI {
         addCourses();
         addStudents();
         addTeachers();
-        enrollStudentOption();
+        System.out.println("****Welcome to the " + school.getSchoolName() + " Database****");
+        while(true){
+            printOptions();
+            int input = Integer.valueOf(scanner.nextLine());
+            switch(input){
+                case 0:
+                    System.out.println("Exiting Database");
+                    break;
+                case 1: school.listStudents();
+                    continue;
+                case 2:
+                    System.out.println("Enter Grade level");
+                    int grade = Integer.valueOf(scanner.nextLine());
+                    school.listStudentsByGrade(grade);
+                    continue;
+                case 3: school.listTeachers();
+                    continue;
+                case 4: enrollStudentOption();
+                    continue;
+                case 5: receiveStudentTuitionOption();
+                    continue;
+                case 6: getStudentInfo();
+                    continue;
+                case 7:
+                case 8: school.showFinanceHistory();
+                    continue;
+            }
+            break;
+        }
 
 
     }
     public void enrollStudentOption(){
-                System.out.println("Which student?");
+                System.out.println("Which student to enroll courses in? Enter first or last name: ");
                 String student = scanner.nextLine();
                 while(true){
                     if(school.studentExist(student)){
@@ -51,7 +79,34 @@ public class UI {
                 }
 
     }
-
+    public void printOptions(){
+        System.out.println("What would you like to do? Press 0 to exit the Database");
+        System.out.println("1)List Students");
+        System.out.println("2)List Students by grade");
+        System.out.println("3)List Teachers");
+        System.out.println("4)Enroll a student in courses");
+        System.out.println("5)Receive student tuition");
+        System.out.println("6)Show a student's information");
+        System.out.println("7)Pay Teacher salary");
+        System.out.println("8)View School's finance history");
+    }
+    public void receiveStudentTuitionOption(){
+        System.out.println("From which student did you receive tuition from?");
+        String student = scanner.nextLine();
+        if(school.studentExist(student)){
+            System.out.println("How much did " + school.getStudentName(student) + " pay?");
+            school.getStudent(student).showInfo();
+            int amount = Integer.valueOf(scanner.nextLine());
+            school.getStudent(student).payTuition(amount);
+        }else{
+            System.out.println("That student doesn't exist");
+        }
+    }
+    public void getStudentInfo(){
+        System.out.println("Which student's info would you like to access? Enter first or last name: ");
+        String student = scanner.nextLine();
+        school.getStudent(student).showInfo();
+    }
     public void addCourses() throws FileNotFoundException {
         File coursesList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/courselist.txt");
         Scanner fileReader = new Scanner(coursesList);
@@ -69,7 +124,6 @@ public class UI {
         for(Course c : courseArrayList){
             System.out.print(i +" ") ;
             System.out.println(c);
-
             i++;
         }
     }
