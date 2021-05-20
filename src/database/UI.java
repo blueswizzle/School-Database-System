@@ -23,6 +23,7 @@ public class UI {
         addTeachers();
         System.out.println("****Welcome to the " + school.getSchoolName() + " Database****");
         while(true){
+            System.out.println("");
             printOptions();
             int input = Integer.valueOf(scanner.nextLine());
             switch(input){
@@ -46,7 +47,8 @@ public class UI {
                     continue;
                 case 7: getTeacherInfo();
                     continue;
-                case 8:
+                case 8: paySalaryTeacher();
+                    continue;
                 case 9: school.showFinanceHistory();
                     continue;
             }
@@ -114,6 +116,12 @@ public class UI {
         System.out.println("Which teacher's information would you like to access? Enter first or last name: ");
         String teacher = scanner.nextLine();
         school.getTeacher(teacher).showTeacherInfo();
+    }
+    public void paySalaryTeacher(){
+        school.listTeachers();
+        System.out.println("Whose salary would you like to pay? School's Remaining balance: $" + school.getBalance());
+        String teacher = scanner.nextLine();
+        school.getTeacher(teacher).receiveSalary();
     }
     public void addCourses() throws FileNotFoundException {
         File coursesList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/courselist.txt");
