@@ -44,8 +44,10 @@ public class UI {
                     continue;
                 case 6: getStudentInfo();
                     continue;
-                case 7:
-                case 8: school.showFinanceHistory();
+                case 7: getTeacherInfo();
+                    continue;
+                case 8:
+                case 9: school.showFinanceHistory();
                     continue;
             }
             break;
@@ -87,8 +89,9 @@ public class UI {
         System.out.println("4)Enroll a student in courses");
         System.out.println("5)Receive student tuition");
         System.out.println("6)Show a student's information");
-        System.out.println("7)Pay Teacher salary");
-        System.out.println("8)View School's finance history");
+        System.out.println("7)Show a teacher's information");
+        System.out.println("8)Pay Teacher salary");
+        System.out.println("9)View School's finance history");
     }
     public void receiveStudentTuitionOption(){
         System.out.println("From which student did you receive tuition from?");
@@ -106,6 +109,11 @@ public class UI {
         System.out.println("Which student's info would you like to access? Enter first or last name: ");
         String student = scanner.nextLine();
         school.getStudent(student).showInfo();
+    }
+    public void getTeacherInfo(){
+        System.out.println("Which teacher's information would you like to access? Enter first or last name: ");
+        String teacher = scanner.nextLine();
+        school.getTeacher(teacher).showTeacherInfo();
     }
     public void addCourses() throws FileNotFoundException {
         File coursesList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/courselist.txt");
