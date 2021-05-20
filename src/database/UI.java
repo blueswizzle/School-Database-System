@@ -20,7 +20,12 @@ public class UI {
     public void start() throws FileNotFoundException {
         addCourses();
         addStudents();
-        System.out.println("Enroll?");
+
+
+
+
+    }
+    public void enrollStudentOption(){
         int input = Integer.valueOf(scanner.nextLine());
         switch(input){
             case 1:
@@ -29,12 +34,21 @@ public class UI {
                 if(school.studentExist(student)){
                     System.out.println("Which course(s) should " + school.getStudentName(student) + " be enrolled in?");
                     printCourses();
-                    break;
+                    int courseInput = Integer.valueOf(scanner.nextLine());
+                    switch(courseInput){
+                        case 1: school.getStudent(student).enroll("Physics", 300);
+                            break;
+                        case 2: school.getStudent(student).enroll("Calculus", 330);
+                            break;
+                        case 3: school.getStudent(student).enroll("English", 300);
+                            break;
+                        case 4: school.getStudent(student).enroll("Chemistry", 330);
+                            break;
+                        case 5: school.getStudent(student).enroll("Biology", 300);
+                            break;
+                    }
                 }
         }
-
-
-
     }
     public void addCourses() throws FileNotFoundException {
         File coursesList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/courselist.txt");
@@ -49,8 +63,12 @@ public class UI {
     }
     public void printCourses(){
         System.out.println("Courses Available: ");
+        int i =1;
         for(Course c : courseArrayList){
+            System.out.print(i +" ") ;
             System.out.println(c);
+
+            i++;
         }
     }
     public void addStudents() throws FileNotFoundException {

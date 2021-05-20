@@ -1,6 +1,7 @@
 package database;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class School {
@@ -79,7 +80,7 @@ public class School {
     public boolean studentExist(String student){
         boolean studentExist = false;
         for(int i=0; i < students.size(); i++){
-            if(students.get(i).getFirstName().equals(student)|| students.get(i).getLastName().equals(student)){
+            if(students.get(i).getFirstName().equalsIgnoreCase(student)|| students.get(i).getLastName().equalsIgnoreCase(student)){
                 studentExist = true;
             }
         }
@@ -93,10 +94,20 @@ public class School {
     public String getStudentName(String student){
        String studentName="";
         for(int i=0; i < students.size(); i++){
-            if(students.get(i).getFirstName().equals(student)|| students.get(i).getLastName().equals(student)){
+            if(students.get(i).getFirstName().equalsIgnoreCase(student)|| students.get(i).getLastName().equalsIgnoreCase(student)){
                 studentName= students.get(i).getFirstName() +" " + students.get(i).getLastName();
             }
         }
         return studentName;
+    }
+    public Student getStudent(String student){          // Returns Student
+        Student s = null;
+        for(int i =0; i < students.size(); i++){
+            if(students.get(i).getFirstName().equalsIgnoreCase(student)|| students.get(i).getLastName().equalsIgnoreCase(student)){
+                 s = students.get(i);
+            }
+        }
+        return s;
+
     }
 }

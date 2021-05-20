@@ -25,8 +25,9 @@ public class Student extends Person {
     public int getGrade(){
         return this.grade;
     }
+
     public void enroll(String course, int price){
-        this.courses.put(course,price);
+        courses.put(course,price);
     }
     public void showEnrolledCourses(){
         courses.forEach((key,value) ->{
