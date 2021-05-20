@@ -41,9 +41,14 @@ public class Student extends Person {
         tuitionRemaining = totalTutionCost;
     }
     public void showEnrolledCourses(){
-        courses.forEach((key,value) ->{
-            System.out.println(key + ":$" + value);
-        });
+        if(courses.isEmpty()){
+            System.out.println("\t\t This student is currently not enrolled in any course");
+        }else{
+            courses.forEach((key,value) ->{
+                System.out.println(key);
+            });
+        }
+
     }
 
     public void showInfo(){
