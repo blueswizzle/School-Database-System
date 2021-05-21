@@ -98,7 +98,7 @@ public class School {
         }
 
     }
-    public String getStudentName(String student){
+    public String getStudentName(String student){               //Returns a student full name as a String
        String studentName="";
         for(int i=0; i < students.size(); i++){
             if(students.get(i).getFirstName().equalsIgnoreCase(student)|| students.get(i).getLastName().equalsIgnoreCase(student)){
@@ -107,7 +107,7 @@ public class School {
         }
         return studentName;
     }
-    public Student getStudent(String student){          // Returns Student
+    public Student getStudent(String student){          // Returns Student object
         Student s = null;
         for(int i =0; i < students.size(); i++){
             if(students.get(i).getFirstName().equalsIgnoreCase(student)|| students.get(i).getLastName().equalsIgnoreCase(student)){
@@ -117,7 +117,7 @@ public class School {
         return s;
 
     }
-    public String getTeacherName(String teacher){
+    public String getTeacherName(String teacher){       //Returns a teacher's full name as a string
         String teacherName="";
         for(int i=0; i < teachers.size(); i++){
             if(teachers.get(i).getFirstName().equalsIgnoreCase(teacher)|| teachers.get(i).getLastName().equalsIgnoreCase(teacher)){
@@ -139,7 +139,7 @@ public class School {
             return false;
         }
     }
-    public static Teacher getTeacher(String teacher){
+    public static Teacher getTeacher(String teacher){           //Retuns a Teacher object
         Teacher t = null;
         for(int i=0; i < teachers.size(); i++){
             if(teachers.get(i).getFirstName().equalsIgnoreCase(teacher)|| teachers.get(i).getLastName().equalsIgnoreCase(teacher)){

@@ -36,17 +36,19 @@ public class Student extends Person {
     }
 
     public void enroll(String course, int price){
-        courses.put(course,price);
-        totalTutionCost += price;
-        tuitionRemaining = totalTutionCost;
+        if(!(courses.containsKey(course))){
+            courses.put(course,price);
+            totalTutionCost += price;
+            tuitionRemaining = totalTutionCost;
+        }
+
     }
     public void showEnrolledCourses(){
         if(courses.isEmpty()){
             System.out.println("\t\t This student is currently not enrolled in any course");
         }else{
             courses.forEach((key,value) ->{
-                System.out.println("\t\tCourses Enrolled in:");
-                System.out.println("\t\t" +key);
+                System.out.println("\t\t\t\t" +key);
             });
         }
 
@@ -57,6 +59,7 @@ public class Student extends Person {
         System.out.println("\t\tTotal Tuition Cost: $" + totalTutionCost);
         System.out.println("\t\tTuiton amount paid as of now: $" + tuitionPaid);
         System.out.println("\t\tTuition remaining to be paid: $" + tuitionRemaining);
+        System.out.println("\t\tCourses Enrolled in: ");
         showEnrolledCourses();
     }
 

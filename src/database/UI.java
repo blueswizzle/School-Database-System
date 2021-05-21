@@ -4,23 +4,26 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.Random;
 
 public class UI {
     School school;
     Scanner scanner;
     ArrayList<Course> courseArrayList;
+    Random rand;
 
     public UI(School school){
         this.school = school;
         this.scanner = new Scanner(System.in);
         this.courseArrayList = new ArrayList<>();
+        this.rand = new Random();
     }
 
     public void start() throws FileNotFoundException {
         addCourses();
         addStudents();
         addTeachers();
+        addRandomCourseForStudents();
         System.out.println("****Welcome to the " + school.getSchoolName() + " Database****");
         while(true){
             System.out.println("");
@@ -158,8 +161,19 @@ public class UI {
             String lastName = parts[1];
             String id = parts[2];
             int grade = Integer.valueOf(parts[3]);
-            school.addStudent(new Student(firstName,lastName,id,grade));
+            school.addStudent(new Student (firstName,lastName,id,grade));
         }
+    }
+    public void addRandomCourseForStudents(){       //Goes through the list of students and randomly assigns up to 2 courses for them
+       int i= school.students.size() - 1;
+       while (i <= school.students.size()){
+           for(Student s : school.students){
+               int courseIndex = rand.nextInt(courseArrayList.size());
+               s.enroll(courseArrayList.get(courseIndex).getCourseName(),courseArrayList.get(courseIndex).getCoursePrice());
+           }
+           i++;
+       }
+
     }
     public void addTeachers() throws FileNotFoundException {
         File teacherList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/teacherslist.txt");
