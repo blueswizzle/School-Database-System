@@ -3,3 +3,8 @@ Calculus,330
 English,300
 Chemistry,330
 Biology,300
+History,320
+Intro to Accounting,350
+Health Science,320
+Intro to Geology,300
+Digital Marketing,320

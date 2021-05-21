@@ -153,7 +153,7 @@ public class UI {
             String firstName = parts[0];
             String lastName = parts[1];
             String id = parts[2];
-            int grade = Integer.valueOf(parts[3]);
+            int grade = rand.nextInt(4) + 1;
             school.addStudent(new Student (firstName,lastName,id,grade));
         }
     }
