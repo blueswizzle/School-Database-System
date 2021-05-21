@@ -45,7 +45,8 @@ public class Student extends Person {
             System.out.println("\t\t This student is currently not enrolled in any course");
         }else{
             courses.forEach((key,value) ->{
-                System.out.println(key);
+                System.out.println("\t\tCourses Enrolled in:");
+                System.out.println("\t\t" +key);
             });
         }
 
@@ -56,6 +57,7 @@ public class Student extends Person {
         System.out.println("\t\tTotal Tuition Cost: $" + totalTutionCost);
         System.out.println("\t\tTuiton amount paid as of now: $" + tuitionPaid);
         System.out.println("\t\tTuition remaining to be paid: $" + tuitionRemaining);
+        showEnrolledCourses();
     }
 
 

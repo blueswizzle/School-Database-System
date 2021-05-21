@@ -112,14 +112,7 @@ public class UI {
         school.listStudents();
         System.out.println("Which student's info would you like to access? Enter first or last name: ");
         String student = scanner.nextLine();
-        System.out.println("Would you like to see " + school.getStudentName(student) + "'s general information or course history (Press 1 for former or 2 for latter)");
-        int input = Integer.valueOf(scanner.nextLine());
-        switch(input){
-            case 1: school.getStudent(student).showInfo();
-                    break;
-            case 2: school.getStudent(student).showEnrolledCourses();
-                    break;
-        }
+        school.getStudent(student).showInfo();
 
     }
     public void getTeacherInfo(){
