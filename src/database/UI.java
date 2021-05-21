@@ -68,18 +68,11 @@ public class UI {
                         System.out.println("Which course(s) should " + school.getStudentName(student) + " be enrolled in? Press 0 to end");
                         printCourses();
                         int courseInput = Integer.valueOf(scanner.nextLine());
-                        switch(courseInput){
-                            case 0: break;
-                            case 1: school.getStudent(student).enroll("Physics", 300);
-                                continue;
-                            case 2: school.getStudent(student).enroll("Calculus", 330);
-                                continue;
-                            case 3: school.getStudent(student).enroll("English", 300);
-                                continue;
-                            case 4: school.getStudent(student).enroll("Chemistry", 330);
-                                continue;
-                            case 5: school.getStudent(student).enroll("Biology", 300);
-                                continue;
+                        if(courseInput == 0){
+                            break;
+                        }else{
+                            school.getStudent(student).enroll(courseArrayList.get(courseInput -1).getCourseName(),courseArrayList.get(courseInput-1).getCoursePrice());
+                            continue;
                         }
                     }
                     break;
