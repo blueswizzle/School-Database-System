@@ -5,7 +5,7 @@ public class Teacher extends Person{
     private int salary; //A teacher's fixed salary per week, doesn't change
     private int salaryEarned; // Salary that a teacher has earned so far
     private int timesGotPaid;
-    //A teacher's ID always start with 'T' to signify this is a teacher; ID is a 7 digit combination of letters and numbers e.g. T23CX78
+    //A teacher's ID always start with 'T' to signify this is a teacher; ID is a 7 digit combination of an upper-case letter and numbers e.g. T239816
     public Teacher(String firstName, String lastName, String id, int salary){
         super(firstName,lastName,id);
         this.salary = salary;
@@ -28,7 +28,7 @@ public class Teacher extends Person{
     }
 
     public void showTeacherInfo(){
-        System.out.println("\t\t" + toString());
+        System.out.println("\t\t" + this);
         System.out.println("\t\tTotal Salary Recevied: $" + salaryEarned);
         System.out.println("\t\tNumber of times paid: " + timesGotPaid);
     }

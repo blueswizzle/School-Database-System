@@ -62,6 +62,21 @@ public class UI {
 
 
     }
+    public String generateID(char type){
+        StringBuilder sb = new StringBuilder();
+        switch(type){
+            case 's':
+                sb.append('S');
+                break;
+            case 't':
+                sb.append('T');
+                break;
+        }
+        for(int i = 0; i < 6; i++){
+            sb.append(String.valueOf(rand.nextInt(10)));
+        }
+        return sb.toString();
+    }
     public void enrollStudentOption(){
                 System.out.println("Which student to enroll courses in? Enter first or last name: ");
                 String student = scanner.nextLine();
@@ -154,7 +169,7 @@ public class UI {
             String [] parts = student.split(",");
             String firstName = parts[0];
             String lastName = parts[1];
-            String id = parts[2];
+            String id = generateID('s');
             int grade = rand.nextInt(4) + 1;
             school.addStudent(new Student (firstName,lastName,id,grade));
         }
@@ -178,8 +193,8 @@ public class UI {
             String [] parts = teacher.split(",");
             String firstName = parts[0];
             String lastName = parts[1];
-            String id = parts[2];
-            int salary = Integer.valueOf(parts[3]);
+            String id = generateID('t');
+            int salary = Integer.valueOf(parts[2]);
             school.addTeacher(new Teacher(firstName,lastName,id,salary));
         }
     }

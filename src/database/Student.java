@@ -11,7 +11,7 @@ public class Student extends Person {
     private int tuitionRemaining;
     private HashMap<String,Integer> courses;
 
-    // A student's ID always starts with 'S' to signify this is a student
+    // A student's ID always starts with 'S' to signify this is a student, ID is a 7 digit combination of an upper-case letter and numbers e.g. S239816
     public Student(String firstName, String lastName, String id, int grade){
         super(firstName,lastName,id);
         this.grade = grade;
@@ -55,7 +55,7 @@ public class Student extends Person {
     }
 
     public void showInfo(){
-        System.out.println("\t\t" + toString());
+        System.out.println("\t\t" + this);
         System.out.println("\t\tTotal Tuition Cost: $" + totalTutionCost);
         System.out.println("\t\tTuiton amount paid as of now: $" + tuitionPaid);
         System.out.println("\t\tTuition remaining to be paid: $" + tuitionRemaining);
