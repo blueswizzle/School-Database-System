@@ -2,6 +2,7 @@ package database;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
@@ -11,6 +12,7 @@ public class UI {
     Scanner scanner;
     ArrayList<Course> courseArrayList;
     Random rand;
+    private static final Path DEFAULT_RESOURCE_PATH = Path.of(System.getProperty("user.dir"),"Resources");
 
     public UI(School school){
         this.school = school;
@@ -125,7 +127,7 @@ public class UI {
         System.out.println("\t\tSchool's Remaining balance: $" + school.getBalance());
     }
     public void addCourses() throws FileNotFoundException {
-        File coursesList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/courselist.txt");
+        File coursesList = new File(DEFAULT_RESOURCE_PATH + "//courselist.txt");
         Scanner fileReader = new Scanner(coursesList);
         while(fileReader.hasNextLine()){
             String course = fileReader.nextLine();
@@ -145,7 +147,7 @@ public class UI {
         }
     }
     public void addStudents() throws FileNotFoundException {
-        File studentList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/studentlist.txt");
+        File studentList = new File(DEFAULT_RESOURCE_PATH + "//studentlist.txt");
         Scanner studentReader = new Scanner(studentList);
         while(studentReader.hasNextLine()){
             String student = studentReader.nextLine();
@@ -169,7 +171,7 @@ public class UI {
 
     }
     public void addTeachers() throws FileNotFoundException {
-        File teacherList = new File("/Users/atheek_99/Documents/Java Projects/School Database System/teacherslist.txt");
+        File teacherList = new File(DEFAULT_RESOURCE_PATH + "//teacherslist.txt");
         Scanner teacherReader = new Scanner(teacherList);
         while(teacherReader.hasNextLine()){
             String teacher = teacherReader.nextLine();
