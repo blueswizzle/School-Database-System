@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class School {
-    static ArrayList<Teacher> teachers;
+     static ArrayList<Teacher> teachers;
      ArrayList<Student> students;
 
     private String schoolName;
@@ -85,8 +85,8 @@ public class School {
         System.out.println("\t\t--------------------------------");
     }
     public boolean studentExist(String student){
-        for(int i=0; i < students.size(); i++){
-            if(students.get(i).getFirstName().equalsIgnoreCase(student)|| students.get(i).getLastName().equalsIgnoreCase(student)){
+        for(Student s: students){
+            if(s.getFirstName().equalsIgnoreCase(student)|| s.getLastName().equalsIgnoreCase(student)){
                 return true;
             }
         }
@@ -94,42 +94,42 @@ public class School {
 
     }
     public String getStudentName(String student){               //Returns a student full name as a String
-        for(int i=0; i < students.size(); i++){
-            if(students.get(i).getFirstName().equalsIgnoreCase(student)|| students.get(i).getLastName().equalsIgnoreCase(student)){
-                return students.get(i).getFirstName() +" " + students.get(i).getLastName();
+        for(Student s : students){
+            if(s.getFirstName().equalsIgnoreCase(student)|| s.getLastName().equalsIgnoreCase(student)){
+                return s.getFirstName() +" " + s.getLastName();
             }
         }
         return "Student doesn't exist";
     }
     public Student getStudent(String student){          // Returns Student object
-        for(int i =0; i < students.size(); i++){
-            if(students.get(i).getFirstName().equalsIgnoreCase(student)|| students.get(i).getLastName().equalsIgnoreCase(student)){
-                 return students.get(i);
+        for(Student s : students){
+            if(s.getFirstName().equalsIgnoreCase(student)|| s.getLastName().equalsIgnoreCase(student)){
+                return s;
             }
         }
         return null;
 
     }
     public String getTeacherName(String teacher){       //Returns a teacher's full name as a string
-        for(int i=0; i < teachers.size(); i++){
-            if(teachers.get(i).getFirstName().equalsIgnoreCase(teacher)|| teachers.get(i).getLastName().equalsIgnoreCase(teacher)){
-                return teachers.get(i).getFirstName() +" " + teachers.get(i).getLastName();
+        for(Teacher t: teachers){
+            if(t.getFirstName().equalsIgnoreCase(teacher)|| t.getLastName().equalsIgnoreCase(teacher)){
+                return t.getFirstName() +" " + t.getLastName();
             }
         }
-        return "Teacher doesn't exist";
+        return "That teacher doesn't exist!";
     }
     public boolean teacherExist(String teacher){
-        for(int i=0; i < teachers.size(); i++){
-            if(teachers.get(i).getFirstName().equalsIgnoreCase(teacher)|| teachers.get(i).getLastName().equalsIgnoreCase(teacher)){
+        for(Teacher t : teachers){
+            if(t.getFirstName().equalsIgnoreCase(teacher)|| t.getLastName().equalsIgnoreCase(teacher)){
                 return true;
             }
         }
         return false;
     }
-    public static Teacher getTeacher(String teacher){           //Retuns a Teacher object
-        for(int i=0; i < teachers.size(); i++){
-            if(teachers.get(i).getFirstName().equalsIgnoreCase(teacher)|| teachers.get(i).getLastName().equalsIgnoreCase(teacher)){
-                return teachers.get(i);
+    public static Teacher getTeacher(String teacher){           //Returns a Teacher object
+        for(Teacher t : teachers){
+            if(t.getFirstName().equalsIgnoreCase(teacher)|| t.getLastName().equalsIgnoreCase(teacher)){
+                return t;
             }
         }
         return null;
